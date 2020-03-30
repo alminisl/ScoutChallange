@@ -53,6 +53,8 @@ Improvements: Add docker-compose so that we can run these containers with 1 comm
 
 # Testing
 
+To run tests go to `cd api/` and run `npm test`.
+
 Currently the only tests are based on the API calls our Controller functions. For this case I think it is enough however better test cases could also be to test end to end with different URLs.
 
 
@@ -85,7 +87,7 @@ This is also something I would investigate more on how to make it more optimized
 
 ### Tests, improve, expand
 
-Like mentioned above, add more tests and make it possible to load multiple URLs
+Like mentioned above, add more tests and make it possible to load multiple URLs.
 
 ### UI / UX
 
