@@ -23,7 +23,7 @@ class App extends Component {
       timings: {phases: {total: 0}},
       error: false,
       errorMessage: '',
-      disableButton: false,
+      disableButton: false
     }
 
     this.analyzeWebsite = this.analyzeWebsite.bind(this)
@@ -46,10 +46,9 @@ class App extends Component {
   }
 
   async analyzeWebsite() {
-    if(this.state.url.indexOf("https://") !== -1 && this.state.url.indexOf("http://") !== -1) {
-      this.setState({error:true, helperText: "Please enter URL with http or https!"})
-      this.resetState()
-      return
+    if(this.state.url.indexOf("https://") === -1 && this.state.url.indexOf("http://") === -1) {
+      const urlWithProtocol = "https://" + this.state.url
+      this.state.url = urlWithProtocol
     }
 
     this.resetState()
@@ -97,13 +96,19 @@ class App extends Component {
     this.setState({ url: event.target.value })
   }
 
+  _handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.analyzeWebsite()
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Container maxWidth="md">
           <h1>Website Analysis tool</h1>
             <div>
-              <TextField helperText={this.state.helperText} error={this.state.error} fullWidth id="filled-full-width" margin="normal" label="Please enter url ex. https://example.com" variant="outlined" onChange={this.handleChange} />
+              <TextField helperText={this.state.helperText} error={this.state.error} fullWidth id="filled-full-width" margin="normal" label="Please enter url ex. https://example.com" variant="outlined" onChange={this.handleChange} onKeyDown={this._handleKeyDown} />
             </div>
             <div>
               <Button disabled={this.state.disableButton} variant="contained" onClick={this.analyzeWebsite} color="primary">Start Website analysis</Button>
