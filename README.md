@@ -104,6 +104,8 @@ Currently the app has same basic security with https, however, what else we coul
 
 Some ground work for scalability is done. We have the docker containers and in the code of the API everything is seperated, so adding new steps and updating the current ones should not be too challanging. Using caching and also caching the most used websites would greatly improve the performance of the app.
 
+Some improvements on the React side of things would be to add a State manager, maybe not redux but at least Context API. Currently the App.js component is the one who propagates the state to the lower components. Also the components should be refactored so that they are responsible for their own state and displaying data.
+
 
 
 
