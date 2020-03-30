@@ -62,18 +62,21 @@ class App extends Component {
   
     if (data) {
       this.setState({ title: data.title, data: data.data, timings: data.data.timings, disableButton: true, error: false})
-      const validation = await this.fetchStep('validation')
+      
+      const validationResponse = await this.fetchStep('validation')
+      if(validationResponse.status === 500) {
+        this.setState({error:true, helperText: validationResponse.statusText + " " + validationResponse.status})
+      }
 
-      const res = await validation.json()
+      const res = await validationResponse.json()
       console.log('Validation Res: ', res)
       this.setState({ validation: res })
-    } else {
-      this.setState({error:true, helperText: "Issue with validating the website!"})
-      this.resetState()
     }
-
     if (this.state.validation) {
       const pictureData = await  await this.fetchStep('pictures')
+      if(pictureData.status === 500) {
+        this.setState({error:true, helperText: pictureData.statusText + " " + pictureData.status})
+      }
       const picturesInfo = await pictureData.json()
       this.setState({ picturesInfo: picturesInfo })
     } else {

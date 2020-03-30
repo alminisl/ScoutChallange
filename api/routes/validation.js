@@ -1,38 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const cheerio = require('cheerio')
-const validate = require('html-validator')
+const validation = require('../controllers/validationController')
 
 router.post('/',async function (req, res, next) {
-  // 1.The HTML version of the document 
-  const $ = cheerio.load(req.body.website)
-
-  let HtmlValidation = ''
-  let HtmlVersion = "HTML 5"
-  let errors = []
-
-  const options = {
-      format: 'json',
-      data: req.body.website,
-      validator: 'WHATWG',
-  }
-
+  let validate = {}
   try {
-    HtmlValidation = await validate(options)
-    errors = HtmlValidation.errors
-    errors.find(error => { if(error.ruleId === 'doctype-html') HtmlVersion = "HTML Legacy Version"})
-  } catch (error) {
-    console.log("Validation Error", error)
-    res.send('Error')
+    validate = await validation(req.body)
+  } catch (err) {
+    res.status(500).send(err)
+    return
   }
-
-  // //3. The number of headings and their level
-  let headingsArray = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-  headingsArray = headingsArray.map((heading) => {
-     return {[heading]: $(heading).length}
-  })
-
-  res.send({headingsArray: headingsArray, errors: errors, HtmlVersion: HtmlVersion})
-});
+  res.send(validate)
+})
 
 module.exports = router;
