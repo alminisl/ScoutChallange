@@ -1,0 +1,31 @@
+TODO:
+  ✔ o	The HTML version of the document @done(20-03-28 21:10)
+  ✔ o	The page title @done(20-03-28 21:10)
+  ☐ o	The number of headings and their level 
+  ✔ o	The number of pictures and the largest one @done(20-03-28 21:10)
+  ✔ o	Internal links and their count @done(20-03-28 21:10)
+  ✔ o	External links and their count @done(20-03-28 21:10)
+  ☐ o	Optional: Inaccessible links and their count 
+  ✔ o	Loading time of the analyzed web page @done(20-03-28 21:10)
+  ☐ o	If the URL is not reachable, display an error message with the HTTP status and the error description.
+    To be done on the frontend, however on the backend I have to make an "error" handler for these kind of cases
+
+
+Expectations:
+  ✔ •	The app contains a npm run command which starts both the server and the client @done(20-03-28 21:11)
+  ✔ •	A clean git history, available in a Github repository @done(20-03-28 21:11)
+  ☐ •	A readme which contains the main steps of building your solution as well as all the assumptions or/and the decisions which were taken, but also the limitations of the implementation.
+  ☐ •	Essential test coverage (Preferably using jest, but mocha | chai | sinon are also fine) 
+  ☐ •	Proper separation of concerns
+  ✔ •	A separate API based on express.js or hapi.js, which contains an endpoint which receives the URL, performs validations (returns 500 for errors, 404 for not found), and returns the expected data back @done(20-03-28 21:11)
+  ✔ •	A separate React.js consumer app based on the create-react-app which contains the front-end part @done(20-03-28 21:11)
+  ☐ •	Good structure of the project / files / services
+  ✔ •	Use plain ES6 @done(20-03-28 21:12)
+  ☐ •	Explain how it could work to crawl a SPA page
+Explain how you would improve the app if you’d want to make it prepared for:
+a.	Production-ready
+b.	Secured
+c.	Scalable
+d.	Faster
+•	(Optional) Start the app in Docker container
+•	A proper JS styleguide
