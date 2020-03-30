@@ -18,9 +18,42 @@ npm install
 
 Then in root folder you can run `npm start` and both, client and api, will start. 
 
+## Using Docker
+
+It is possible to build the project using docker. You can find the docker files in the root of the folder `api/` and `client/`. They will be 2 seperate docker containers running, and you can also use them for development if needed. 
+
+First step is to build the images: 
+
+for `api`:
+
+`$ docker build -t api:dev`
+
+for `client`:
+
+```$ docker build -t client:dev```
+
+After we build our images we can simply run them: 
+
+```$ docker run -it -v ${PWD}:/app -v /app/node_modules -p 3000:3000 --rm client:dev```
+
+```$ docker run -it -v ${PWD}:/app -v /app/node_modules -p 9000:9000 --rm api:dev```
+
+after that just navigate to `https://localhost:3000` and the project should be up and running.
+
+**Short Explanation** 
+
+1. The `docker run` command creates a new container instance from the image.
+2. `-it` makes the terminal interactive so we can stop it / terminate it by doing CTRL+C
+3. `-v ${PWD}:/app` mounts the code into the container to “/app”.
+4. Snce we want to use the container version of the “node_modules” folder, we configured another volume: `-v /app/node_modules`, which means our docker will use its own node_modules folder.
+5. `-p 3000:3000` and `-p 9000:9000` exposes port 3000/9000 to other Docker containers and 3000/9000 for the host. I used same ports in this case for simplicity
+6. `--rm` removes the container and volumes after the container exits.
+
+Improvements: Add docker-compose so that we can run these containers with 1 command
+
 # Testing
 
-Currently the only tests are based on the API calls.
+Currently the only tests are based on the API calls our Controller functions. For this case I think it is enough however better test cases could also be to test end to end with different URLs.
 
 
 # Development process
@@ -49,13 +82,14 @@ So for now on bigger websites with a lot of DOM elements it can get really slow.
 
 This is also something I would investigate more on how to make it more optimized when checking the image sizes. Currently it's very slow and knows to timeout sometimes. 
 
+
 ### Tests, improve, expand
 
-Currently the tests are only for the API, which are not ideal.. 
+Like mentioned above, add more tests and make it possible to load multiple URLs
 
 ### UI / UX
 
-The whole frontend is fine, however it could be more readable and more smooth with maybe some animations and not just "popin" of elements. 
+The whole frontend is fine, however it could be more readable and more smooth with maybe some animations and not just "popin" of elements. Also there is sometimes an issue where you have to refresh page to call a new website, not sure what causes this issue yet.
 
 
 
