@@ -5,10 +5,6 @@ import PictureComponent from './pictureComponent'
 import LinksComponent from './linksComponent'
 
 class ResultComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let validation = ''
     let picture = ''
