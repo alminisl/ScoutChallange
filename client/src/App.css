@@ -10,11 +10,6 @@ html, body {
   align-items: center;
 }
 
-.flex-items {
-  border: solid 1px black;
-  border-radius: 5px;
-}
-
 .border {
   margin-top:3%;
   border: solid 1px black;

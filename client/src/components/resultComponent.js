@@ -14,31 +14,32 @@ class ResultComponent extends Component {
     let picture = ''
     let links = ''
     let loadTime = 0
-    if(this.props.data.validation.headingsArray.length === 0) {
+
+    if (this.props.data.validation.headingsArray.length === 0) {
       validation = <div></div>
     } else {
-      validation =  <ValidationComponent headingsArray={this.props.data.validation.headingsArray} errors={this.props.data.validation.errors} htmlVersion={this.props.data.validation.HtmlVersion}></ValidationComponent>
+      validation = <ValidationComponent headingsArray={this.props.data.validation.headingsArray} errors={this.props.data.validation.errors} htmlVersion={this.props.data.validation.HtmlVersion}></ValidationComponent>
     }
 
-    if(this.props.data.picturesInfo.numberOfPictures === 0) {
+    if (this.props.data.picturesInfo.numberOfPictures === 0) {
       picture = <div></div>
     } else {
-      picture =  <PictureComponent numberOfImages={this.props.data.picturesInfo.numberOfPictures} largestImage={this.props.data.picturesInfo.largestImage}></PictureComponent>
+      picture = <PictureComponent numberOfImages={this.props.data.picturesInfo.numberOfPictures} largestImage={this.props.data.picturesInfo.largestImage}></PictureComponent>
     }
 
-    if(this.props.data.links.numberOfLinks === 0) {
+    if (this.props.data.links.numberOfLinks === 0) {
       links = <div></div>
     } else {
-      links = <LinksComponent numberOfLinks={this.props.data.links.numberOfLinks} 
-                              internalLinks={this.props.data.links.internalLinks} 
-                              externalLinks={this.props.data.links.externalLinks}
-                              internalLinksCount={this.props.data.links.internalLinks.length}
-                              externalLinksCount={this.props.data.links.externalLinks.length}
-                              >
-                              </LinksComponent>
+      links = <LinksComponent numberOfLinks={this.props.data.links.numberOfLinks}
+        internalLinks={this.props.data.links.internalLinks}
+        externalLinks={this.props.data.links.externalLinks}
+        internalLinksCount={this.props.data.links.internalLinks.length}
+        externalLinksCount={this.props.data.links.externalLinks.length}
+      >
+      </LinksComponent>
     }
 
-    if(this.props.loadTime !== 0) {
+    if (this.props.loadTime !== 0) {
       loadTime = this.props.loadTime
     }
 

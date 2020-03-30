@@ -61,7 +61,7 @@ class App extends Component {
     const data = await response.json()
   
     if (data) {
-      this.setState({ title: data.title, data: data.data, timings: data.data.timings, disableButton: true})
+      this.setState({ title: data.title, data: data.data, timings: data.data.timings, disableButton: true, error: false})
       const validation = await this.fetchStep('validation')
 
       const res = await validation.json()
@@ -82,7 +82,7 @@ class App extends Component {
     }
 
     if (this.state.picturesInfo) {
-      const linksData = await  await this.fetchStep('links')
+      const linksData = await this.fetchStep('links')
       const rawLinks = await linksData.json()
       this.setState({ links: rawLinks, disableButton: false })
     } else {
@@ -92,7 +92,7 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ url: event.target.value });
+    this.setState({ url: event.target.value })
   }
 
   render() {

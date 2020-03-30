@@ -8,7 +8,7 @@ const got = require('got')
 router.post('/', async function(req, res, next) {
   const Url = req.body.url
   let response = ''
-
+  console.log('URL', Url)
   try {
     response = await got(Url)
   } catch (err) {

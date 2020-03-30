@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemText, Collapse, List, Button } from '@material-ui/core';
+import { ListItem, ListItemText, List, Button } from '@material-ui/core';
 
 class LinksComponent extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class LinksComponent extends Component {
         </div>
         <div className="m-top-2">
         <Button onClick={this.handleClickExternal} variant="contained" color="primary">External Links: {this.props.externalLinksCount}</Button>
-        <div in={this.state.openExternal} timeout="auto" >
+        <div timeout="auto" >
           <List disablePadding className="scrollble">
             {this.props.externalLinks ? 
               this.props.externalLinks.map((link, i) => 

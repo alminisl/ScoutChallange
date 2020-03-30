@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemText, Collapse, List, Button } from '@material-ui/core';
+import { ListItem, ListItemText, List, Button } from '@material-ui/core';
 
 
 class ValidationComponent extends Component {
