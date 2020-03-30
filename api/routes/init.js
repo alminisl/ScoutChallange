@@ -15,7 +15,6 @@ router.post('/', async function(req, res, next) {
   }
 
   const data = {website: response.body, url: Url, timings: response.timings}
-  console.log('data', data)
   //2. The page title 
   const $ = cheerio.load(response.body)
   res.send({title: $('title').text(), data: data})

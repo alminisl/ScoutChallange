@@ -69,7 +69,6 @@ class App extends Component {
       }
 
       const res = await validationResponse.json()
-      console.log('Validation Res: ', res)
       this.setState({ validation: res })
     }
     if (this.state.validation) {
