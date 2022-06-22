@@ -14,7 +14,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-session": "^1.17.0",
-    "got": "^10.7.0",
+    "got": "^11.8.5",
     "html-validator": "^5.1.7",
     "html5-validator": "^1.2.1",
     "http-errors": "~1.6.3",
